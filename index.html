@@ -9,19 +9,20 @@
 </head>
 
 <body>
-    <section>
+    <section class="reproductor">
         <h1>Titulo</h1>
         <p>nombre</p>
-        <audio src="">
-            <source />
+        <audio id="audio">
+            <source src="" type="audio/mpeg" />
         </audio>
-        <input type="text">
-        <div>
-            <button>atras</button>
-            <button>play</button>
-            <button>adelante</button>
+        <input type="range" value="0" id="progreso">
+        <div class="controles">
+            <button class="atras"><i class="bi bi-skip-backward-circle"></i></i></i></button>
+            <button class="play"><i class="bi bi-play-circle" id="icon-play"></i></button>
+            <button class="adelante"><i class="bi bi-skip-forward-circle"></i></button>
         </div>
     </section>
+
     <script src="app.js"></script>
 </body>
 
