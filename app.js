@@ -72,10 +72,14 @@ function reproducirPausar(){
 
 function reproducirCancion(){
     cancion.play();
+    iconPlay.classList.add("bi-pause-fill");
+    iconPlay.classList.remove("bi-play-fill");
 }
 
 function pausarCancion(){
     cancion.pause();
+    iconPlay.classList.remove("bi-pause-fill");
+    iconPlay.classList.add("bi-play-fill");
 }
 
 cargarCancion();

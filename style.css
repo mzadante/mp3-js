@@ -82,7 +82,7 @@ body>* {
 #progreso::-webkit-slider-thumb {
     appearance: none;
     -webkit-appearance: none;
-    background: rgba(170, 170, 170, 1);
+    background: rgb(246, 3, 3);
     width: 1rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
