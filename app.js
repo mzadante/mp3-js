@@ -104,4 +104,13 @@ buttonAdelante.addEventListener('click', ()=> {
     reproducirCancion();
 });
 
+buttonAtras.addEventListener('click', ()=> {
+    indiceCancionActual = (indiceCancionActual - 1);
+    if (indiceCancionActual < 0) {
+        indiceCancionActual = canciones.length - 1;
+    }
+    cargarCancion();
+    reproducirCancion();
+});
+
 cargarCancion();
