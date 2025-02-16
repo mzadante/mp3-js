@@ -1,5 +1,5 @@
 //conectando los elementos del HTML con el JS
-const tituloCancion= document.querySelector('.reproductor h1');
+const tituloCancion = document.querySelector('.reproductor h1');
 const interpreteCancion = document.querySelector('.reproductor p');
 const cancion = document.getElementById('audio');
 const progresoCancion = document.getElementById('progreso');
@@ -53,33 +53,55 @@ let indiceCancionActual = 0;
 
 //Funcion para cargar la cancion
 
-function cargarCancion(){
+function cargarCancion() {
     tituloCancion.textContent = canciones[indiceCancionActual].titulo;
     interpreteCancion.textContent = canciones[indiceCancionActual].interprete;
     cancion.src = canciones[indiceCancionActual].archivo;
-    cancion.addEventListener('loadeddata', function() {}) //cuando la cancion se cargue
+    cancion.addEventListener('loadeddata', function () { }) //cuando la cancion se cargue
 };
 
 buttonPlayPausa.addEventListener('click', reproducirPausar);
 
-function reproducirPausar(){
-    if(cancion.paused){
+function reproducirPausar() {
+    if (cancion.paused) {
         reproducirCancion();
-    }else{
+    } else {
         pausarCancion();
     }
 }
 
-function reproducirCancion(){
+function reproducirCancion() {
     cancion.play();
     iconPlay.classList.add("bi-pause-fill");
     iconPlay.classList.remove("bi-play-fill");
 }
 
-function pausarCancion(){
+function pausarCancion() {
     cancion.pause();
     iconPlay.classList.remove("bi-pause-fill");
     iconPlay.classList.add("bi-play-fill");
 }
+
+cancion.addEventListener('timeupdate', function () {
+    if (!cancion.paused) {
+        progresoCancion.value = cancion.currentTime;
+    }
+});
+
+progresoCancion.addEventListener('input', function () {
+    cancion.currentTime = progresoCancion.value;
+});
+
+progresoCancion.addEventListener('change', ()=> {
+    cancion.currentTime = progresoCancion.value;
+});
+buttonAdelante.addEventListener('click', ()=> {
+    indiceCancionActual = (indiceCancionActual + 1);
+    if (indiceCancionActual >= canciones.length) {
+        indiceCancionActual = 0;
+    }
+    cargarCancion();
+    reproducirCancion();
+});
 
 cargarCancion();
