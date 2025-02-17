@@ -48,6 +48,11 @@ const canciones = [
         archivo: 'music/The Doors - L.A. Woman 1971.mp3'
     }
 ];
+//para cargar metadata de la cancion
+cancion.addEventListener('loadedmetadata', function () {
+    progresoCancion.max = cancion.duration;
+    progresoCancion.value = cancion.currentTime;
+});
 
 let indiceCancionActual = 0;
 
@@ -84,7 +89,8 @@ function pausarCancion() {
 
 cancion.addEventListener('timeupdate', function () {
     if (!cancion.paused) {
-        progresoCancion.value = cancion.currentTime;
+        //que la barra de progreso se mueva con el tiempo de la cancion de acuerdo a la duracion
+        progresoCancion.value = cancion.currentTime*100 / cancion.duration;
     }
 });
 
